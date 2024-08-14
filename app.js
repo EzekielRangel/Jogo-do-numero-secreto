@@ -7,10 +7,17 @@ let tentativas = 1;
 
 // enquanto chute não for igual ao n.s.
 while (chute != numeroSecreto) {
-    chute = prompt(`Escolha um número entre 1 e ${numeroMaximo}`);
+    // convertendo o chute para um número inteiro
+    chute = parseInt(prompt(`Escolha um número entre 1 e ${numeroMaximo}`));
+
+    // validação do chute - garantir que o usuário insira um número válido
+    while (isNaN(chute) || chute < 1 || chute > numeroMaximo) {
+        chute = parseInt(prompt(`Por favor, escolha um número válido entre 1 e ${numeroMaximo}`));
+    }
+    
     // se chute for igual ao número secreto
     if (chute == numeroSecreto) {
-        break;
+        // Não precisa do 'break' aqui porque o loop while principal já vai parar
     } else {
         if (chute > numeroSecreto) {
             alert(`O número secreto é menor que ${chute}`);
